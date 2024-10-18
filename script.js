@@ -18,8 +18,6 @@ window.addEventListener('load', () => {
     });
 });
 
-
-// animation timeline
 const animationTimeline = () => {
     // split chars that needs to be animated individually
     const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
@@ -53,23 +51,23 @@ const animationTimeline = () => {
     tl.to(".container", 0.6, {
         visibility: "visible"
     })
-    .from(".one", 0.7, {
+    .from(".one", 0.8, {
         opacity: 0,
         y: 10
     })
-    .from(".two", 0.4, {
+    .from(".two", 1.0, {
         opacity: 0,
         y: 10
     })
     .to(".one",
-        0.7,
+        0.9,
         {
             opacity: 0,
             y: 10
         },
     "+=3.5")
     .to(".two",
-        0.7,
+        0.9,
         {
             opacity: 0,
             y: 10
@@ -264,9 +262,4 @@ const animationTimeline = () => {
         "+=1"
     );
 
-    // Restart Animation on click
-    const replyBtn = document.getElementById("replay");
-    replyBtn.addEventListener("click", () => {
-        tl.restart();
-    });
 }
