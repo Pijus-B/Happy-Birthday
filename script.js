@@ -1,21 +1,5 @@
-// trigger to play music in the background with sweetalert
-window.addEventListener('load', () => {
-    Swal.fire({
-        title: 'Do you want to play music in the background?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes',
-        cancelButtonText: 'No',
-    }).then((result) => {
-        if (result.isConfirmed) {
-            document.querySelector('.song').play();
-            animationTimeline();
-        } else {
-            animationTimeline();
-        }
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    animationTimeline(); // Start the animation immediately when DOM is ready
 });
 
 const animationTimeline = () => {
@@ -51,23 +35,23 @@ const animationTimeline = () => {
     tl.to(".container", 0.6, {
         visibility: "visible"
     })
-    .from(".one", 0.8, {
+    .from(".one", 0.7, {
         opacity: 0,
         y: 10
     })
-    .from(".two", 1.0, {
+    .from(".two", 0.4, {
         opacity: 0,
         y: 10
     })
     .to(".one",
-        0.9,
+        0.7,
         {
             opacity: 0,
             y: 10
         },
     "+=3.5")
     .to(".two",
-        0.9,
+        0.7,
         {
             opacity: 0,
             y: 10
@@ -94,15 +78,14 @@ const animationTimeline = () => {
     })
     .staggerTo(
         ".hbd-chatbox span",
-        1.5, {
+        0.5, {
             visibility: "visible",
         },
         0.05
     )
-    .to(".fake-btn", 0.1, {
+    .to(".fake-btn", 0.05, {
         backgroundColor: "rgb(127, 206, 248)",
-    },
-    "+=4")
+    })
     .to(
         ".four",
         0.5, {
@@ -260,6 +243,15 @@ const animationTimeline = () => {
             rotation: 90,
         },
         "+=1"
-    );
+    )
+    .to(".button-container", 0.5, {
+        visibility: "visible", 
+        opacity: 1,            
+    });
 
+    // Restart Animation on click
+    const replyBtn = document.getElementById("replay");
+    replyBtn.addEventListener("click", () => {
+        tl.restart();
+    });
 }
